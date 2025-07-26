@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gelato Paradiso - Handgemachtes Eis aus besten Zutaten</title>
+    <style>
+        /* Grundlegende Formatierung */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        /* Navigation */
+        .navbar {
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 15px 0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #FF6B6B;
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #FF6B6B;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 1;
+        }
+        
+        .hero .container {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #FF6B6B;
+            color: #fff;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 30px;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #ff5252;
+        }
+        
+        /* Sections */
+        .section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 50px;
+            color: #333;
+        }
+        
+        /* Über uns */
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .about-image {
+            flex: 1;
+        }
+        
+        .about-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-text h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #FF6B6B;
+        }
+        
+        /* Eissorten */
+        .flavors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .flavor-item {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .flavor-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .flavor-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .flavor-info {
+            padding: 20px;
+            background-color: #fff;
+        }
+        
+        .flavor-info h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #FF6B6B;
+        }
+        
+        /* Galerie */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .gallery-item {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+        
+        .gallery-item img:hover {
+            transform: scale(1.05);
+        }
+        
+        /* Kontakt */
+        .contact-container {
+            display: flex;
+            gap: 50px;
+        }
+        
+        .contact-info {
+            flex: 1;
+        }
+        
+        .contact-info h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #FF6B6B;
+        }
+        
+        .contact-info ul {
+            list-style: none;
+        }
+        
+        .contact-info li {
+            margin-bottom: 15px;
+        }
+        
+        .contact-info strong {
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .contact-map {
+            flex: 1;
+        }
+        
+        .map-container {
+            width: 100%;
+            height: 400px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .map-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        /* Footer */
+        .footer {
+            background-color: #333;
+            color: #fff;
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        .footer p {
+            margin-top: 20px;
+            font-size: 14px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .about-content,
+            .contact-container {
+                flex-direction: column;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .navbar .container {
+                flex-direction: column;
+            }
+            
+            .nav-links {
+                margin-top: 20px;
+            }
+            
+            .nav-links li {
+                margin: 0 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="logo">Gelato Paradiso</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">Über uns</a></li>
+                <li><a href="#flavors">Eissorten</a></li>
+                <li><a href="#gallery">Galerie</a></li>
+                <li><a href="#contact">Kontakt</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="hero" id="home" style="background-image: url('https://cdn1.genspark.ai/user-upload-image/gpt_image_generated/d72139b8-bbf2-4e54-b1f0-2eb34c42f6ef_wm');">
+        <div class="container">
+            <h1>Handgemachtes Eis aus besten Zutaten</h1>
+            <p>Bei Gelato Paradiso verwenden wir nur die frischesten Zutaten für unser hausgemachtes italienisches Eis.</p>
+            <a href="#flavors" class="btn">Entdecke unsere Eissorten</a>
+        </div>
+    </section>
+    
+    <!-- Über Uns Section -->
+    <section class="section" id="about">
+        <div class="container">
+            <h2 class="section-title">Über uns</h2>
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="https://cdn1.genspark.ai/user-upload-image/gpt_image_generated/05909af5-4db6-4ba8-b21b-a8ae59d6d9a3_wm" alt="Unser Team">
+                </div>
+                <div class="about-text">
+                    <h3>Tradition trifft Innovation</h3>
+                    <p>Gelato Paradiso wurde 2010 gegründet und hat sich schnell einen Namen für authentisches italienisches Eis gemacht. Unsere Rezepte stammen aus der italienischen Tradition, werden aber mit modernen Techniken und kreativen Ideen kombiniert.</p>
+                    <p>Wir stellen täglich frisches Eis her und verwenden dabei ausschließlich hochwertige Zutaten. Die Früchte beziehen wir von lokalen Bauern, und für spezielle Zutaten wie Pistazien oder Vanille setzen wir auf ausgewählte Importeure.</p>
+                    <p>Unser Team besteht aus passionierten Eismachern, die ihr Handwerk lieben und ständig neue Geschmacksrichtungen entwickeln. Besuchen Sie uns und erleben Sie den Unterschied!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Eissorten Section -->
+    <section class="section" id="flavors" style="background-color: #f9f9f9;">
+        <div class="container">
+            <h2 class="section-title">Unsere Eissorten</h2>
+            <div class="flavors-grid">
+                <div class="flavor-item">
+                    <img src="https://cdn1.genspark.ai/user-upload-image/gpt_image_generated/93c2bd69-af6c-4c9f-94ec-36f3185a5601_wm" alt="Klassiker">
+                    <div class="flavor-info">
+                        <h3>Klassiker</h3>
+                        <p>Unsere zeitlosen Favoriten wie Vanille, Schokolade, Erdbeere und Stracciatella - perfekt zubereitet mit den besten Zutaten.</p>
+                    </div>
+                </div>
+                <div class="flavor-item">
+                    <img src="https://cdn1.genspark.ai/user-upload-image/gpt_image_generated/211338ab-dfe0-4793-a981-8f1e644e25e6_wm" alt="Fruchtige Sorten">
+                    <div class="flavor-info">
+                        <h3>Fruchtige Sorten</h3>
+                        <p>Erfrischende Sorbets und Eissorten aus saisonalen Früchten - von Zitrone und Mango bis zu exotischen Kombinationen.</p>
+                    </div>
+                </div>
+                <div class="flavor-item">
+                    <img src="https://cdn1.genspark.ai/user-upload-image/gpt_image_generated/f4a21a1d-4a84-4c5c-a8c5-262c804c1f76_wm" alt="Spezialitäten">
+                    <div class="flavor-info">
+                        <h3>Spezialitäten</h3>
+                        <p>Entdecken Sie unsere besonderen Kreationen wie Salzkaramell, Pistazie mit Schokoladestückchen oder Haselnuss-Nougat.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Galerie Section -->
+    <section class="section" id="gallery">
+        <div class="container">
+            <h2 class="section-title">Galerie</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://cdn1.genspark.ai/user-upload-image/gpt_image_generated/e2383a20-d4c5-44b6-b22e-b2b2e20ed532_wm" alt="Unsere Eisdiele">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://cdn1.genspark.ai/user-upload-image/gpt_image_generated/93c2bd69-af6c-4c9f-94ec-36f3185a5601_wm" alt="Eiswaffeln">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://cdn1.genspark.ai/user-upload-image/gpt_image_generated/f4a21a1d-4a84-4c5c-a8c5-262c804c1f76_wm" alt="Eisbecher">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://cdn1.genspark.ai/user-upload-image/gpt_image_generated/211338ab-dfe0-4793-a981-8f1e644e25e6_wm" alt="Eistheke">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Kontakt Section -->
+    <section class="section" id="contact" style="background-color: #f9f9f9;">
+        <div class="container">
+            <h2 class="section-title">Kontakt & Öffnungszeiten</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>So erreichen Sie uns</h3>
+                    <ul>
+                        <li>
+                            <strong>Adresse:</strong>
+                            Eisstraße 15<br>
+                            94345 Obermotzing
+                        </li>
+                        <li>
+                            <strong>Telefon:</strong>
+                            09429 123456
+                        </li>
+                        <li>
+                            <strong>E-Mail:</strong>
+                            info@gelato-paradiso.de
+                        </li>
+                        <li>
+                            <strong>Öffnungszeiten:</strong>
+                            Mo-Fr: 11:00 - 20:00 Uhr<br>
+                            Sa-So: 10:00 - 22:00 Uhr
+                        </li>
+                    </ul>
+                </div>
+                <div class="contact-map">
+                    <div class="map-container">
+                        <img src="https://cdn1.genspark.ai/user-upload-image/gpt_image_generated/e2383a20-d4c5-44b6-b22e-b2b2e20ed532_wm" alt="Außenansicht">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <a href="#" class="logo">Gelato Paradiso</a>
+            <p>&copy; 2025 Gelato Paradiso. Alle Rechte vorbehalten.</p>
+        </div>
+    </footer>
+</body>
+</html>
